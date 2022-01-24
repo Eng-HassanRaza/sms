@@ -30,8 +30,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.home'  # Enable the inner home (home)
-    'apps.schooladmins',
+    'apps.home',  # Enable the inner home (home)
+    'apps.management',
+    'apps.teachers',
+    'apps.students',
+    'apps.parents',
+    'apps.owners',
 ]
 
 MIDDLEWARE = [
