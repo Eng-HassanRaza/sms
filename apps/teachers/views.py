@@ -4,7 +4,14 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
+from apps.teachers.models import Teachers
+
+
 def teachers(request):
-    # ...
-    return HttpResponse('<h1>teachers Page</h1>')
+    query = Teachers.objects.all()
+    context = {
+        'query': query
+    }
+
+    return render(request,'icons.html',context)
 
