@@ -11,9 +11,10 @@ class Teachers(models.Model):
     date_of_birth = models.DateField()
     date_of_joining = models.DateField()
     date = models.DateTimeField(auto_now=True)
+    salary = models.IntegerField(max_length=255, null=True, blank=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
 
-
-    def __init__(self):
+    def __str__(self):
         return self.first_name
 
 
