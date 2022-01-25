@@ -9,7 +9,7 @@ class Students(models.Model):
         (MALE, 'Male'),
         (FEMALE, 'Female'),
     ]
-    first_name = models.CharField(max_length=20, null= True)
+    first_name = models.CharField(max_length=20, null=True)
     last_name = models.CharField(max_length=20, null=True)
     father_name = models.CharField(max_length=20, null=True)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
@@ -21,7 +21,7 @@ class Students(models.Model):
     date_of_enrollement = models.DateField()
     date = models.DateTimeField(auto_now=True)
 
-    def __init__(self):
+    def __str__(self):
         return self.first_name
 
 

@@ -6,7 +6,7 @@ from django.db import models
 class School(models.Model):
     name = models.CharField(max_length=255, null= True)
     school_email = models.EmailField(max_length=255, null=True, blank=True)
-    school_phone_number= models.CharField(max_length=255, null=True, blank=True)
+    school_phone_number = models.CharField(max_length=255, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
     website= models.URLField(null=True, blank=True)
     date = models.DateTimeField(auto_now=True)

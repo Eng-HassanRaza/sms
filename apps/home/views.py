@@ -8,11 +8,23 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
+from apps.students.models import Students
+from apps.teachers.models import Teachers
+from apps.parents.models import Parents
+
 
 
 @login_required(login_url="/login/")
 def index(request):
-    context = {'segment': 'index'}
+    total_students = Students.objects.count()
+    total_teachers = Teachers.objects.count()
+    total_parents = Parents.objects.count()
+    context = {
+               'segment': 'index',
+                'total_students': total_students,
+                'total_teachers': total_teachers,
+                'total_parents': total_parents
+               }
 
     html_template = loader.get_template('home/index.html')
     return HttpResponse(html_template.render(context, request))
