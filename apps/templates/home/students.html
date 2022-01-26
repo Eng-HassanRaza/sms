@@ -34,7 +34,10 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
+
             <h3 class="mb-0">Students Records</h3>
+
+            <h3 class="mb-0">All Students Records</h3>
           </div>
           <!-- Light table -->
           <div class="table-responsive">
@@ -74,6 +77,27 @@
                   <td class="phonenumber">
                     03025540089
                   </td>
+                  <th scope="col" class="sort" data-sort="budget">Name</th>
+                  <th scope="col" class="sort" data-sort="completion">Father Name</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">Class</th>
+                  <th scope="col">Date of Birth</th>
+                  <th scope="col">Father Phone Number</th>
+                  <th scope="col">Date Of Enrollement</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+              {% for data in students_data %}
+                <tr>
+                  <td class="id">{{data.id}}</td>
+                  <td class="name">{{data.first_name}} {{data.last_name}}</td>
+                  <td class="name">{{data.father_name}}</td>
+                  <td class="name">{{data.gender}}</td>
+                  <td class="name">{{data.class_number}}</td>
+                  <td class="name">{{data.date_of_birth}}</td>
+                  <td class="name">{{data.father_phone_number}}</td>
+                  <td class="name">{{data.date_of_enrollement}}</td>
                   <td class="text-right">
                     <div class="dropdown">
                       <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,6 +111,8 @@
                     </div>
                   </td>
                 </tr>
+              {% endfor %}
+
               </tbody>
             </table>
           </div>

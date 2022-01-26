@@ -1,6 +1,8 @@
 from django.db import models
+from apps.management.models import School, Class
 
 # Create your models here.
+
 
 class Students(models.Model):
     MALE = 'M'
@@ -12,6 +14,7 @@ class Students(models.Model):
     first_name = models.CharField(max_length=20, null=True)
     last_name = models.CharField(max_length=20, null=True)
     father_name = models.CharField(max_length=20, null=True)
+    class_number = models.ForeignKey(Class, on_delete=models.CASCADE)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     phone_number = models.CharField(max_length=255, null=True, blank=True)
     father_phone_number = models.CharField(max_length=255, null=True, blank=True)

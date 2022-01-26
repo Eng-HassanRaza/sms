@@ -5,18 +5,22 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . models import Students
 from django.template import loader
+from django.contrib.auth.decorators import login_required
 
+
+
+@login_required(login_url="/login/")
 def students(request):
     total_students = Students.objects.count()
-    # total_teachers = Teachers.objects.count()
-    # total_parents = Parents.objects.count()
+    students_data = Students.objects.all()
+
     context = {
-        'segment': 'index',
         'total_students': total_students,
-        # 'total_teachers': total_teachers,
-        # 'total_parents': total_parents
+        'students_data': students_data,
     }
 
     html_template = loader.get_template('home/students.html')
+
+    print(html_template)
     return HttpResponse(html_template.render(context, request))
 
