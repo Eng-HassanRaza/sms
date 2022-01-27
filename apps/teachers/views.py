@@ -9,9 +9,11 @@ from apps.teachers.models import Teachers
 
 def teachers(request):
     query = Teachers.objects.all()
+    total=query.count()
     context = {
-        'query': query
+        'query': query,
+        'total': total,
     }
 
-    return render(request,'icons.html',context)
+    return render(request,'home/icons.html',context)
 

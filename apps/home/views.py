@@ -40,7 +40,7 @@ def index(request):
 #         load_template = request.path.split('/')[-1]
 #
 #         if load_template == 'admin':
-#             return HttpResponseRedirect(reverse('admin:index'))
+#            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 return HttpResponseRedirect(reverse('admin:index'))
 #         context['segment'] = load_template
 #
 #         html_template = loader.get_template('home/' + load_template)
