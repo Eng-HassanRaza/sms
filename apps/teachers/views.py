@@ -8,8 +8,8 @@ from apps.teachers.models import Teachers
 
 
 def teachers(request):
-    total=Teachers.objects.all().count()
     query = Teachers.objects.all()
+    total=query.count()
     context = {
         'query': query,
         'total': total,
