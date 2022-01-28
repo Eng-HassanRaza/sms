@@ -7,5 +7,3 @@ admin.site.register(School)
 admin.site.register(Admins)
 admin.site.register(Class)
 # Register your models here.
-
-admin.site.register(Class)
