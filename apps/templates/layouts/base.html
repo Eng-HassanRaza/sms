@@ -42,8 +42,15 @@
 </head>
 
 <body class="">
-
+  {% if user.is_authenticated and user.is_superuser %}
   {% include "includes/sidenav.html" %}
+  {% elif user.is_authenticated and user.is_student %}
+  {% include "includes/studentsidenav.html" %}
+  {% elif user.is_authenticated and user.is_parent %}
+  {% include "includes/parentsidenav.html" %}
+  {% elif user.is_authenticated and user.is_teacher %}
+  {% include "includes/teachersidenav.html" %}
+  {% endif %}
 
   <div class="main-content" id="panel">
 

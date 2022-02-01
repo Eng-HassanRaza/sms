@@ -1,10 +1,12 @@
 from django.db import models
+from apps.authentication.models import User
 
 # Create your models here.
 
 
 class Parents(models.Model):
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     first_name = models.CharField(max_length=255, null= True)
     last_name = models.CharField(max_length=255, null=True)
     email = models.EmailField(max_length=255, null=True, blank=True)
