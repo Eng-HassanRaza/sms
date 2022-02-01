@@ -27,6 +27,7 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:85', 'http://127.0.0.1', 'https://' + 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'apps.authentication',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'apps.students',
     'apps.parents',
     'apps.owners',
+
 ]
 
 MIDDLEWARE = [
@@ -83,7 +85,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'haris',
         'PASSWORD': 'haris123',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
@@ -138,6 +141,8 @@ STATICFILES_DIRS = (
     os.path.join(CORE_DIR, 'apps/static'),
 )
 
+AUTH_USER_MODEL = 'authentication.User'
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 #############################################################
 #############################################################

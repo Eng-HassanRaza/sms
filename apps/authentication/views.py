@@ -7,9 +7,18 @@ Copyright (c) 2019 - present AppSeed.us
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, SignUpForm
+from django.views.generic import CreateView
+
+from . forms import StudentSignUpForm, TeacherSignUpForm , ParentSignUpForm
+from .models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
+
 
 
 def login_view(request):
+
     form = LoginForm(request.POST or None)
 
     msg = None
@@ -54,3 +63,50 @@ def register_user(request):
         form = SignUpForm()
 
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+
+# Create Sign UP for Student Haris
+class StudentSignUpView(CreateView):
+    model = User
+    form_class = StudentSignUpForm
+    template_name = 'accounts/registerstudent.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'student'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('students')
+
+
+# Create Sign UP for Student Haris
+class TeacherSignUpView(CreateView):
+    model = User
+    form_class = TeacherSignUpForm
+    template_name = 'accounts/registerteacher.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'teacher'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('teacher')
+
+
+# Create Sign UP for Parents  -- Haris
+class ParentSignUpView(CreateView):
+    model = User
+    form_class = ParentSignUpForm
+    template_name = 'accounts/registerparent.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'parent'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('parent')

@@ -1,10 +1,12 @@
 from django.db import models
 from apps.management.models import School, Class
+from apps.management.models import User
 
 # Create your models here.
 
 
 class Teachers(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     first_name = models.CharField(max_length=20, null= True)
     last_name = models.CharField(max_length=20, null=True)
     gender = models.CharField(max_length=20, null=True)

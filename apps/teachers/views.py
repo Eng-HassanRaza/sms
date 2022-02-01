@@ -15,5 +15,5 @@ def teachers(request):
         'total': total,
     }
 
-    return render(request,'home/icons.html',context)
+    return render(request,'teachers/teachersindex.html',context)
 

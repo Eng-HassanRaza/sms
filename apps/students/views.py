@@ -20,7 +20,7 @@ def students(request):
         # 'total_parents': total_parents
     }
 
-    html_template = loader.get_template('home/students.html')
+    html_template = loader.get_template('students/studentsindex.html')
     print(html_template)
     return HttpResponse(html_template.render(context, request))
 
