@@ -1,28 +1,30 @@
-version: '3.8'
+version: "3.3"
+
 services:
-  appseed-app:
-    container_name: appseed_app
+  # Database Postgres
+  db:
+    image: postgres:latest
     restart: always
-    env_file: .env
-    build: .
-    networks:
-      - db_network
-      - web_network
-  nginx:
-    container_name: nginx
-    restart: always
-    image: "nginx:latest"
+    environment:
+      - POSTGRES_DB=sms
+      - POSTGRES_USER=haris
+      - POSTGRES_PASSWORD=haris123
     ports:
-      - "85:85"
+      - 5432:5432
     volumes:
-      - ./nginx:/etc/nginx/conf.d
-    networks:
-      - web_network
-    depends_on: 
-      - appseed-app
-networks:
-  db_network:
-    driver: bridge
-  web_network:
-    driver: bridge
- 
+      - ./data/db:/var/lib/postgresql/data
+    container_name: postgres_db
+
+  # Django Application
+  django:
+    container_name: docker-sms
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app:django
+    volumes:
+      - .:/django
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
