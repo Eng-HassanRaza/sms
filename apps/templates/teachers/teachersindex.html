@@ -13,7 +13,7 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-              <h6 class="h2 text-white d-inline-block mb-0">Teacher Dashboard</h6>
+              <h6 class="h2 text-white d-inline-block mb-0">Hello , {{teacherdetails.first_name}} {{teacherdetails.last_name}}</h6>
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
@@ -35,8 +35,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Teacher Dashboard</h5>
-                      <span class="h2 font-weight-bold mb-0">{{total_students}}</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Students Assigned</h5>
+                      <span class="h2 font-weight-bold mb-0">{{TotalStudentsAssigned}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -57,8 +57,10 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Total Teachers</h5>
-                      <span class="h2 font-weight-bold mb-0">{{total_teachers}}</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Classes Assigned</h5>
+
+                      <span class="h2 font-weight-bold mb-0">{{total_classes_assigned}}</span>
+
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -101,8 +103,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Earnings</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Salary</h5>
+                      <span class="h2 font-weight-bold mb-0">{{teacherdetails.salary}}</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">

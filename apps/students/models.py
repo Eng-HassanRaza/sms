@@ -1,5 +1,6 @@
 from django.db import models
 from apps.management.models import School, Class
+from apps.teachers.models import Teachers
 from apps.authentication.models import User
 
 # Create your models here.
@@ -25,9 +26,25 @@ class Students(models.Model):
     address = models.CharField(max_length=255, null=True, blank=True)
     date_of_enrollement = models.DateField()
     date = models.DateTimeField(auto_now=True)
+    assigned_teacher = models.ForeignKey(Teachers, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.first_name
+
+
+class Attendance(models.Model):
+    PRESENT = 'P'
+    ABSENT = 'A'
+    LEAVE = 'L'
+    ATTENDANCE_CHOICES = [
+        (PRESENT, 'Present'),
+        (ABSENT, 'Absent'),
+        (LEAVE, 'Leave')
+    ]
+    student_name = models.ForeignKey(Students, on_delete=models.CASCADE)
+    attandance = models.CharField(max_length=10, choices=ATTENDANCE_CHOICES)
+    date = models.DateTimeField(auto_now=True)
+
 
 
 

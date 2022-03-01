@@ -13,7 +13,7 @@ class School(models.Model):
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.first_name
+        return self.name
 
 
 class Admins(models.Model):
